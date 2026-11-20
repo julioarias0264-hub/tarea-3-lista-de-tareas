@@ -1,0 +1,36 @@
+TAREA 3: LISTA DE TAREAS
+
+CÓMO ABRIR
+Abre index.html en tu navegador. Mantén styles.css y script.js en la misma carpeta.
+No requiere instalar paquetes.
+
+FUNCIONES AGREGADAS
+- Editar: el botón Editar carga texto, fecha y categoría en el formulario.
+  Guardar cambios actualiza la tarea; Cancelar edición conserva sus datos.
+- Fecha límite opcional. Se avisa si vence hoy, mañana o en los próximos
+  tres días. Las tareas vencidas se distinguen y las completadas dejan
+  de mostrar alertas de vencimiento.
+- Categorías: Personal, Trabajo, Escuela y Otra. Se pueden filtrar junto
+  con el estado de la tarea.
+- Botón para alternar modo claro y oscuro.
+- Animación de salida antes de eliminar; respeta movimiento reducido.
+- Tareas y tema se conservan en localStorage del navegador.
+
+PRUEBA MANUAL
+1. Agrega una tarea de Escuela con fecha de mañana: debe decir Vence mañana.
+2. Pulsa Editar, cambia texto y categoría, y guarda los cambios.
+3. Prueba los filtros de categoría y estado.
+4. Marca la tarea como completada: el contador baja y desaparece la alerta.
+5. Cambia el tema y recarga: deben conservarse el tema y la tarea.
+6. Elimina la tarea: debe animarse antes de desaparecer.
+7. Revisa la página en una ventana estrecha y navega con Tab.
+
+VERIFICACIÓN REALIZADA
+Sintaxis de JavaScript y pruebas de lógica con DOM simulado: agregar,
+validar espacios, texto seguro, fechas, editar, cancelar, completar,
+filtrar, persistencia, tema, eliminación diferida y datos anteriores.
+Pendiente: revisión visual en navegador; el visor de esta sesión bloqueó
+la apertura de archivos locales. No se generaron capturas de ejecución.
+
+BASE DEL CURSO
+https://github.com/michel-lopez-franco/CursoDeJS

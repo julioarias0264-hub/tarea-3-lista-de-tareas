@@ -5,40 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Lista de Tareas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>📝 Mi Lista de Tareas</h1>
+    <main class="container">
+        <header>
+            <div><h1>Mi lista de tareas</h1><p>Un pendiente a la vez.</p></div>
+            <button id="btn-tema" type="button" aria-pressed="false">Modo oscuro</button>
+        </header>
 
-        <!-- Formulario para agregar tareas -->
         <form id="form-tarea">
-            <input
-                type="text"
-                id="input-tarea"
-                placeholder="¿Qué necesitas hacer?"
-                required
-            >
-            <button type="submit">Agregar</button>
+            <label class="campo-texto" for="input-tarea">Tarea
+                <input type="text" id="input-tarea" placeholder="¿Qué necesitas hacer?" required maxlength="200">
+            </label>
+            <label for="input-fecha">Fecha límite <span>(opcional)</span>
+                <input type="date" id="input-fecha">
+            </label>
+            <label for="input-categoria">Categoría
+                <select id="input-categoria">
+                    <option>Personal</option><option>Trabajo</option><option>Escuela</option><option>Otra</option>
+                </select>
+            </label>
+            <div class="acciones-formulario">
+                <button type="submit" id="btn-guardar" class="principal">Agregar tarea</button>
+                <button type="button" id="btn-cancelar" hidden>Cancelar edición</button>
+            </div>
         </form>
 
-        <!-- Filtros -->
-        <div class="filtros">
-            <button class="filtro activo" data-filtro="todas">Todas</button>
-            <button class="filtro" data-filtro="pendientes">Pendientes</button>
-            <button class="filtro" data-filtro="completadas">Completadas</button>
-        </div>
-
-        <!-- Lista de tareas -->
-        <ul id="lista-tareas">
-            <!-- Las tareas se agregarán aquí con JavaScript -->
-        </ul>
-
-        <!-- Contador -->
-        <p class="contador">
-            <span id="contador-pendientes">0</span> tareas pendientes
-        </p>
-    </div>
-
-    <script src="script.js"></script>
+        <section aria-label="Tus tareas">
+            <div class="barra-filtros">
+                <div class="filtros" role="group" aria-label="Filtrar por estado">
+                    <button class="filtro activo" data-filtro="todas" aria-pressed="true">Todas</button>
+                    <button class="filtro" data-filtro="pendientes" aria-pressed="false">Pendientes</button>
+                    <button class="filtro" data-filtro="completadas" aria-pressed="false">Completadas</button>
+                </div>
+                <label for="filtro-categoria" class="filtro-categoria">Categoría
+                    <select id="filtro-categoria">
+                        <option value="todas">Todas</option><option>Personal</option><option>Trabajo</option><option>Escuela</option><option>Otra</option>
+                    </select>
+                </label>
+            </div>
+            <p class="ayuda">Se destacan las tareas que vencen hoy o en los próximos 3 días.</p>
+            <ul id="lista-tareas"></ul>
+            <p class="contador"><span id="contador-pendientes">0</span> tareas pendientes</p>
+        </section>
+        <p id="mensaje" role="status" aria-live="polite"></p>
+    </main>
 </body>
 </html>

@@ -1,187 +1,89 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    color-scheme: light;
+    --fondo: #eef0fa;
+    --superficie: #fff;
+    --suave: #f5f6fb;
+    --texto: #24283b;
+    --secundario: #555b72;
+    --borde: #ccd0df;
+    --acento: #5145af;
+    --seleccion: #e7e3ff;
+    --urgente: #81510a;
+    --urgente-fondo: #fff6df;
+    --peligro: #b02b3e;
+    --peligro-fondo: #fff0f2;
 }
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 40px 20px;
+:root[data-tema="oscuro"] {
+    color-scheme: dark;
+    --fondo: #151723;
+    --superficie: #202334;
+    --suave: #282c40;
+    --texto: #f1f1f8;
+    --secundario: #b8bed6;
+    --borde: #515970;
+    --acento: #b5aaff;
+    --seleccion: #393259;
+    --urgente: #ffd28c;
+    --urgente-fondo: #3c3023;
+    --peligro: #ffb0bb;
+    --peligro-fondo: #402830;
 }
-
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-/* Formulario */
-#form-tarea {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#input-tarea {
-    flex: 1;
-    padding: 12px 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-#input-tarea:focus {
-    outline: none;
-    border-color: #667eea;
-}
-
-#form-tarea button {
-    padding: 12px 24px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#form-tarea button:hover {
-    background: #5a67d8;
-}
-
-/* Filtros */
-.filtros {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center;
-}
-
-.filtro {
-    padding: 8px 16px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-}
-
-.filtro:hover {
-    background: #e0e0e0;
-}
-
-.filtro.activo {
-    background: #667eea;
-    color: white;
-}
-
-/* Lista de tareas */
-#lista-tareas {
-    list-style: none;
-}
-
-.tarea {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: all 0.3s;
-}
-
-.tarea:hover {
-    background: #f0f0f0;
-    transform: translateX(5px);
-}
-
-.tarea.completada {
-    opacity: 0.6;
-}
-
-.tarea.completada .tarea-texto {
-    text-decoration: line-through;
-    color: #999;
-}
-
-/* Checkbox personalizado */
-.tarea input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #667eea;
-}
-
-.tarea-texto {
-    flex: 1;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* Botón eliminar */
-.btn-eliminar {
-    background: none;
-    border: none;
-    color: #dc3545;
-    cursor: pointer;
-    font-size: 1.2rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tarea:hover .btn-eliminar {
-    opacity: 1;
-}
-
-.btn-eliminar:hover {
-    color: #c82333;
-}
-
-/* Contador */
-.contador {
-    text-align: center;
-    color: #666;
-    margin-top: 20px;
-    font-size: 0.9rem;
-}
-
-/* Animación para nuevas tareas */
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.tarea {
-    animation: aparecer 0.3s ease;
-}
-
-/* Mensaje cuando no hay tareas */
-.sin-tareas {
-    text-align: center;
-    color: #999;
-    padding: 40px;
-    font-style: italic;
+* { box-sizing: border-box; }
+body { margin: 0; padding: 48px 20px; min-height: 100vh; background: var(--fondo); color: var(--texto); font: 16px/1.5 'Segoe UI', sans-serif; }
+::selection { background: var(--seleccion); color: var(--texto); }
+.container { max-width: 820px; margin: auto; padding: 36px; background: var(--superficie); border-radius: 16px; box-shadow: 0 12px 40px #10142b14; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 28px; }
+h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2rem); letter-spacing: -.025em; line-height: 1.2; }
+header p { margin: 8px 0 0; color: var(--secundario); }
+button, input, select { font: inherit; }
+button, input:not([type="checkbox"]), select { min-height: 44px; border: 1px solid var(--borde); border-radius: 8px; padding: 9px 12px; background: var(--superficie); color: var(--texto); }
+button { cursor: pointer; transition: background .15s; }
+button:hover { background: var(--seleccion); }
+button:disabled { cursor: default; opacity: .5; }
+:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+input, select { width: 100%; caret-color: var(--acento); }
+input::placeholder { color: var(--secundario); opacity: 1; }
+label { display: flex; flex-direction: column; gap: 6px; font-size: .9rem; font-weight: 600; }
+label span { font-weight: 400; color: var(--secundario); display: contents; }
+#form-tarea { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 28px; border-bottom: 1px solid var(--borde); }
+.campo-texto, .acciones-formulario { grid-column: 1 / -1; }
+.acciones-formulario { display: flex; gap: 10px; flex-wrap: wrap; }
+.principal, .filtro.activo { background: var(--acento); color: var(--superficie); border-color: var(--acento); font-weight: 600; }
+.principal:hover, .filtro.activo:hover { filter: brightness(.92); background: var(--acento); }
+.barra-filtros { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-top: 28px; flex-wrap: wrap; }
+.filtros { display: flex; gap: 5px; flex-wrap: wrap; }
+.filtro { font-size: .875rem; padding: 8px 10px; }
+.filtro-categoria { min-width: 125px; }
+.ayuda { color: var(--secundario); font-size: .83rem; margin: 18px 0 8px; }
+#lista-tareas { padding: 0; margin: 0; list-style: none; }
+.tarea { display: flex; align-items: center; gap: 14px; padding: 18px 12px; border-bottom: 1px solid var(--borde); }
+.tarea-contenido { flex: 1; min-width: 0; }
+.tarea-texto { overflow-wrap: anywhere; }
+.tarea-detalles { margin: 4px 0 0; color: var(--secundario); font-size: .8rem; }
+.tarea input[type="checkbox"] { flex-shrink: 0; width: 21px; height: 21px; margin: 0; accent-color: var(--acento); cursor: pointer; }
+.tarea-acciones { display: flex; gap: 6px; }
+.tarea-acciones button { font-size: .83rem; padding: 6px 9px; }
+.btn-eliminar { color: var(--peligro); }
+.por-vencer { background: var(--urgente-fondo); }
+.por-vencer .tarea-detalles { color: var(--urgente); }
+.vencida { background: var(--peligro-fondo); }
+.vencida .tarea-detalles { color: var(--peligro); }
+.completada .tarea-texto { text-decoration: line-through; color: var(--secundario); }
+.contador { color: var(--secundario); font-size: .875rem; margin: 20px 0 0; }
+.sin-tareas { text-align: center; padding: 40px 16px; color: var(--secundario); }
+#mensaje { color: var(--secundario); font-size: .875rem; margin: 16px 0 0; }
+#mensaje:empty { margin: 0; }
+[hidden] { display: none !important; }
+@keyframes eliminar { to { opacity: 0; transform: translateX(24px) scale(.97); } }
+.tarea.eliminando { animation: eliminar .28s ease-in forwards; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .tarea.eliminando { animation-duration: .01ms; } }
+@media (max-width: 600px) {
+    body { padding: 20px 12px; }
+    .container { padding: 24px 18px; }
+    header { align-items: start; }
+    #btn-tema { font-size: .8rem; white-space: nowrap; }
+    #form-tarea { grid-template-columns: 1fr; }
+    .tarea { flex-wrap: wrap; gap: 12px; }
+    .tarea-contenido { flex-basis: calc(100% - 40px); }
+    .tarea-acciones { margin-left: 33px; }
 }
